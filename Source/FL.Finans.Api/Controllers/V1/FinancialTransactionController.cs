@@ -8,8 +8,6 @@ namespace FL.Finans.Api.Controllers.V1
     /// <summary>
     /// This is the financial transaction controller
     /// </summary>
-    [ApiController]
-    [Route("api/v1/[controller]")]
     public class FinancialTransactionController : BaseController
     {
 
