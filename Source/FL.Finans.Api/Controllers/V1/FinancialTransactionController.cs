@@ -1,5 +1,7 @@
-﻿using FL.Finans.Api.Controllers.Base;
+﻿using FL.Data.Inferfaces;
+using FL.Finans.Api.Controllers.Base;
 using FL.Model;
+using Microsoft.AspNetCore.DataProtection.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Transactions;
 
@@ -10,6 +12,12 @@ namespace FL.Finans.Api.Controllers.V1
     /// </summary>
     public class FinancialTransactionController : BaseController
     {
+
+        #region Properties
+
+        protected readonly IFinancialTransactionRepository FinancialTransactionRepository;
+
+        #endregion
 
         #region Methods
 
@@ -22,9 +30,7 @@ namespace FL.Finans.Api.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<List<FinancialTransaction>>> GetAll()
         {
-            var transaction = new FinancialTransaction();
-
-            return default;
+            return await FinancialTransactionRepository.GetAll();
         }
 
         /// <summary>

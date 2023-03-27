@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FL.Data.Inferfaces
 {
-    public interface IFinancialTransaction : IBaseRepository<FinancialTransaction>
+    public interface IFinancialTransactionRepository : IBaseRepository<FinancialTransaction>
     {
         Task<FinancialTransaction> GetById(int id);
     }
