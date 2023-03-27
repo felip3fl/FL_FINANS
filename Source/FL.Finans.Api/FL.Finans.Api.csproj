@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FL.Data\FL.Data.csproj" />
     <ProjectReference Include="..\FL.Model\FL.Model.csproj" />
   </ItemGroup>
 
