@@ -15,7 +15,16 @@ namespace FL.Finans.Api.Controllers.V1
 
         #region Properties
 
-        protected readonly IFinancialTransactionRepository FinancialTransactionRepository;
+        protected readonly IFinancialTransactionRepository _financialTransactionRepository;
+
+        #endregion
+
+        #region Constructor
+        
+        public FinancialTransactionController(IFinancialTransactionRepository financialTransactionRepository)
+        {
+            _financialTransactionRepository = financialTransactionRepository;
+        }
 
         #endregion
 
@@ -30,7 +39,7 @@ namespace FL.Finans.Api.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<List<FinancialTransaction>>> GetAll()
         {
-            return await FinancialTransactionRepository.GetAll();
+            return await _financialTransactionRepository.GetAll();
         }
 
         /// <summary>
@@ -43,9 +52,7 @@ namespace FL.Finans.Api.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<FinancialTransaction>> Get(int id)
         {
-            var transaction = new FinancialTransaction();
-
-            return transaction;
+            return await _financialTransactionRepository.GetById(id);
         }
 
 

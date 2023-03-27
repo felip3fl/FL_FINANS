@@ -6,9 +6,12 @@ namespace FL.Data.Repositories
 {
     public class FinancialTransactionRepository : BaseRepository<FinancialTransaction>, IFinancialTransactionRepository
     {
-        public Task<FinancialTransaction> GetById(int id)
+        public async Task<FinancialTransaction> GetById(int id)
         {
-            throw new NotImplementedException();
+            var teste = new FinancialTransaction();
+            teste.Description = "TESTE TESTE";
+            return teste;
+
         }
     }
 }
