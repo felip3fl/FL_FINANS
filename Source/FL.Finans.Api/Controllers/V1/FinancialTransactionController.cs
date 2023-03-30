@@ -10,6 +10,7 @@ namespace FL.Finans.Api.Controllers.V1
     /// <summary>
     /// This is the financial transaction controller
     /// </summary>
+    [Route("api/[controller]")]
     public class FinancialTransactionController : BaseController
     {
 
@@ -34,7 +35,7 @@ namespace FL.Finans.Api.Controllers.V1
         /// Get all Financial Transaction
         /// </summary>
         /// <returns></returns>
-        [HttpGet(Name = "GetAllFinancialTransactions")]
+        [HttpGet( "GetAllFinancialTransactions")]
         [ProducesResponseType(typeof(List<FinancialTransaction>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<List<FinancialTransaction>>> GetAll()
@@ -47,7 +48,7 @@ namespace FL.Finans.Api.Controllers.V1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("id:int",Name = "GetFinancialTransaction")]
+        [HttpGet("GetFinancialTransaction/{id:int}")]
         [ProducesResponseType(typeof(FinancialTransaction), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<FinancialTransaction>> Get(int id)
@@ -56,6 +57,7 @@ namespace FL.Finans.Api.Controllers.V1
         }
 
 
+        [HttpPut]
         public async Task<ActionResult<List<String>>> Put()
         {
             var transaction = new FinancialTransaction();
@@ -69,10 +71,8 @@ namespace FL.Finans.Api.Controllers.V1
         /// </summary>
         /// <param name="financialTransaction"></param>
         /// <returns></returns>
-        [HttpPost(Name = "Post")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> Post(FinancialTransaction financialTransaction)
+        [HttpPost]
+        public async Task<ActionResult> Update(FinancialTransaction financialTransaction)
         {
             return Ok(); ;
         }
