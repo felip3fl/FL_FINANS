@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -13,8 +14,39 @@ namespace FL.Finans.Bff.Controllers.Base
 
         public BaseController()
         {
-            _urlBase = "";
+            _urlBase = "https://localhost:7053/";
             _httpClient = new HttpClient();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="endpoint"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        protected async Task<T> GetById<T>(string endpoint, int id)
+        {
+            var response = await GetById(endpoint, id);
+
+            if (response == null)
+            {
+                var contentResult = await response.Content.ReadAsStringAsync();
+                var output = JsonConvert.DeserializeObject<T>(contentResult);
+                return output;
+            }
+
+            return default;
+        }
+
+        private async Task<HttpResponseMessage> GetById(string endpoint, int id)
+        {
+            if(!endpoint.EndsWith("/"))
+                endpoint += "/";
+
+            var output = await _httpClient.GetAsync(_urlBase + endpoint + id);
+
+            return output;
         }
 
         /// <summary>
