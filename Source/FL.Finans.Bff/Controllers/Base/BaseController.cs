@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Reflection.PortableExecutable;
 using System.Text;
@@ -29,7 +29,7 @@ namespace FL.Finans.Bff.Controllers.Base
         {
             var response = await GetById(endpoint, id);
 
-            if (response == null)
+            if (response != null)
             {
                 var contentResult = await response.Content.ReadAsStringAsync();
                 var output = JsonConvert.DeserializeObject<T>(contentResult);
