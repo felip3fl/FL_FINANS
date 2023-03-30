@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Reflection.PortableExecutable;
 using System.Text;
@@ -14,7 +14,7 @@ namespace FL.Finans.Bff.Controllers.Base
 
         public BaseController()
         {
-            _urlBase = "https://localhost:7053/";
+            _urlBase = "https://localhost:7053/api/FinancialTransaction/";
             _httpClient = new HttpClient();
         }
 
