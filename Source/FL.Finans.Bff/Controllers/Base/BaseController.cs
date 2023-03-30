@@ -44,7 +44,8 @@ namespace FL.Finans.Bff.Controllers.Base
             if(!endpoint.EndsWith("/"))
                 endpoint += "/";
 
-            var output = await _httpClient.GetAsync(_urlBase + endpoint + id);
+            var url = _urlBase + endpoint + id;
+            var output = await _httpClient.GetAsync(url);
 
             return output;
         }
