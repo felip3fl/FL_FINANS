@@ -56,9 +56,26 @@ namespace FL.Finans.Api.Controllers.V1
             return await _financialTransactionRepository.GetById(id);
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="financialTransaction"></param>
+        /// <returns></returns>
         [HttpPut]
-        public async Task<ActionResult<List<String>>> Put()
+        public async Task<ActionResult<List<String>>> Put(FinancialTransaction financialTransaction)
+        {
+            var transaction = new FinancialTransaction();
+
+            return default;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="financialTransaction"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        public async Task<ActionResult<List<String>>> Delete(FinancialTransaction financialTransaction)
         {
             var transaction = new FinancialTransaction();
 
