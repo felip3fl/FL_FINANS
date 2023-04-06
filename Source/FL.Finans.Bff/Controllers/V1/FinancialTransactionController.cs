@@ -21,5 +21,18 @@ namespace FL.Finans.Bff.Controllers.V1
             return Ok(output);
         }
 
+        /// <summary>
+        /// Save the transaction
+        /// </summary>
+        /// <param name="financialTransaction"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult> Update(FinancialTransaction financialTransaction)
+        {
+            var output = await PostAsync<FinancialTransaction>("GetFinancialTransaction/", financialTransaction);
+
+            return Ok(output);
+        }
+
     }
 }
