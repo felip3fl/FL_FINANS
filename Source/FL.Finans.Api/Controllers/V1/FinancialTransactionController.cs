@@ -66,7 +66,10 @@ namespace FL.Finans.Api.Controllers.V1
         {
             var transaction = new FinancialTransaction();
 
-            return default;
+            if (transaction == null)
+                AdicionarErroProcessamento("Erro - Objeto vazio");
+            
+            return CustomResponse();
         }
 
         /// <summary>
@@ -79,7 +82,10 @@ namespace FL.Finans.Api.Controllers.V1
         {
             var transaction = new FinancialTransaction();
 
-            return default;
+            if (transaction == null)
+                AdicionarErroProcessamento("Erro - Objeto vazio");
+
+            return CustomResponse();
         }
 
 
@@ -91,7 +97,10 @@ namespace FL.Finans.Api.Controllers.V1
         [HttpPost]
         public async Task<ActionResult> Update(FinancialTransaction financialTransaction)
         {
-            return Ok(); ;
+            if (financialTransaction.Id == "")
+                AdicionarErroProcessamento("Erro - Objeto financialTransaction vazio");
+
+            return CustomResponse(); ;
         }
 
         #endregion
