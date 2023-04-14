@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FL.Finans.Bff.Controllers.V1
 {
+    [ApiController]
     [Route("api/[controller]")]
     public class FinancialTransactionController : BaseController
     {
