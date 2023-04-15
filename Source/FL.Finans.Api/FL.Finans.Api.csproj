@@ -16,4 +16,8 @@
     <ProjectReference Include="..\FL.Model\FL.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>
