@@ -3,6 +3,7 @@ using FL.Finans.Api.Controllers.Base;
 using FL.Model;
 using Microsoft.AspNetCore.DataProtection.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Data.Common;
 using System.Transactions;
 
 namespace FL.Finans.Api.Controllers.V1
@@ -10,6 +11,7 @@ namespace FL.Finans.Api.Controllers.V1
     /// <summary>
     /// This is the financial transaction controller
     /// </summary>
+    [ApiController]
     [Route("api/[controller]")]
     public class FinancialTransactionController : BaseController
     {
