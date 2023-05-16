@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Reflection.PortableExecutable;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace FL.Finans.Bff.Controllers.Base
@@ -9,13 +9,12 @@ namespace FL.Finans.Bff.Controllers.Base
     public class BaseController : Controller
     {
 
-        private HttpClient _httpClient;
-        private readonly string _urlBase;
+        private readonly HttpClient _httpClient;
 
         public BaseController()
         {
-            _urlBase = "https://localhost:7053/api/FinancialTransaction/";
             _httpClient = new HttpClient();
+            _httpClient.BaseAddress = new Uri("https://localhost:7053/api/FinancialTransaction/");
         }
 
         /// <summary>
@@ -32,7 +31,7 @@ namespace FL.Finans.Bff.Controllers.Base
             if (response != null)
             {
                 var contentResult = await response.Content.ReadAsStringAsync();
-                var output = JsonConvert.DeserializeObject<T>(contentResult);
+                var output = JsonSerializer.Deserialize<T>(contentResult);
                 return output;
             }
 
@@ -44,7 +43,7 @@ namespace FL.Finans.Bff.Controllers.Base
             if(!endpoint.EndsWith("/"))
                 endpoint += "/";
 
-            var url = _urlBase + endpoint + id;
+            var url = endpoint + id;
             var output = await _httpClient.GetAsync(url);
 
             return output;
@@ -70,7 +69,7 @@ namespace FL.Finans.Bff.Controllers.Base
         /// <returns></returns>
         private async Task<HttpResponseMessage> Get(string endpoint)
         {
-            var output = await _httpClient.GetAsync(_urlBase + endpoint);
+            var output = await _httpClient.GetAsync(endpoint);
 
             return output;
         }
@@ -85,12 +84,13 @@ namespace FL.Finans.Bff.Controllers.Base
         /// <returns></returns>
         protected async Task<T> PostAsync<T>(string endpoint, object objectSerialized, List<HttpClientParameter> header = null)
         {
-            var response = await PostAsync(endpoint, JsonConvert.SerializeObject(objectSerialized), header);
+            var response = await PostAsync(endpoint, JsonSerializer.Serialize(objectSerialized), header);
 
+            var jsonOption = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             if (response == null)
             {
                 var contentResult = await response.Content.ReadAsStringAsync();
-                var output = JsonConvert.DeserializeObject<T>(contentResult);
+                var output = JsonSerializer.Deserialize<T>(contentResult, jsonOption);
                 return output;
             }
 
@@ -104,7 +104,7 @@ namespace FL.Finans.Bff.Controllers.Base
         /// <returns></returns>
         protected async Task<HttpResponseMessage> DeleteById(string endpoint)
         {
-            return await _httpClient.DeleteAsync(_urlBase + endpoint);
+            return await _httpClient.DeleteAsync(endpoint);
         }
 
         /// <summary>
@@ -115,13 +115,15 @@ namespace FL.Finans.Bff.Controllers.Base
         /// <returns></returns>
         protected async Task<HttpResponseMessage> PutAsync(string endpoint, object input)
         {
-            var objectSerialized = input == null ? String.Empty : JsonConvert.SerializeObject(input);
+            var objectSerialized = input == null ? String.Empty : JsonSerializer.Serialize(input);
 
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Put,
+
+                
                 Content = new StringContent(objectSerialized, Encoding.UTF8, "application/json"),
-                RequestUri = new Uri(_urlBase + endpoint),
+                RequestUri = new Uri(endpoint),
             };
 
             var output = await _httpClient.SendAsync(request);

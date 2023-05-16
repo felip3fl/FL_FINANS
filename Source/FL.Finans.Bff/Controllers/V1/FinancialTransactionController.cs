@@ -9,6 +9,11 @@ namespace FL.Finans.Bff.Controllers.V1
     public class FinancialTransactionController : BaseController
     {
 
+        public FinancialTransactionController() : base () 
+        { 
+
+        }
+
         /// <summary>
         /// Get a Financial Transaction by Id
         /// </summary>
