@@ -1,4 +1,4 @@
-using FL.Finans.Api.Configuration;
+using FL.Point.Api.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 

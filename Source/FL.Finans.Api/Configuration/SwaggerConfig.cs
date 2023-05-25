@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace FL.Finans.Api.Configuration
+namespace FL.Point.Api.Configuration
 {
     public static class SwaggerConfig
     {

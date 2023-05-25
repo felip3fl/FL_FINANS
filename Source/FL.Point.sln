@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FL.Finans.Api", "FL.Finans.Api\FL.Finans.Api.csproj", "{F033F8EE-6094-4AD8-ABD2-5116B76EDE0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FL.Point.Api", "FL.Finans.Api\FL.Point.Api.csproj", "{F033F8EE-6094-4AD8-ABD2-5116B76EDE0E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Infrastructure", "1 - Infrastructure", "{EDCA906F-61E5-4C38-82D1-F0AB37EC2E35}"
 EndProject
@@ -13,11 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Data", "3 - Data", "{39
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Tests", "4 - Tests", "{8DAE7E34-4CDC-4045-BB64-F00DFDE0C9A6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FL.Model", "FL.Model\FL.Model.csproj", "{3A2F266B-8DE3-4A0C-BC4E-911AB8F232CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FL.Point.Model", "FL.Model\FL.Point.Model.csproj", "{3A2F266B-8DE3-4A0C-BC4E-911AB8F232CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FL.Data", "FL.Data\FL.Data.csproj", "{3CB23FAD-A5EA-4A5F-A916-B8BD42DDB254}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FL.Point.Data", "FL.Data\FL.Point.Data.csproj", "{3CB23FAD-A5EA-4A5F-A916-B8BD42DDB254}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FL.Finans.Bff", "FL.Finans.Bff\FL.Finans.Bff.csproj", "{BB4BD4AE-2B12-4252-833A-BEFC37A1DF3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FL.Point.Bff", "FL.Finans.Bff\FL.Point.Bff.csproj", "{BB4BD4AE-2B12-4252-833A-BEFC37A1DF3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

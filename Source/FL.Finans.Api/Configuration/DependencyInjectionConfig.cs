@@ -1,7 +1,7 @@
 ﻿using FL.Data.Inferfaces;
 using FL.Data.Repositories;
 
-namespace FL.Finans.Api.Configuration
+namespace FL.Point.Api.Configuration
 {
     public static class DependencyInjectionConfig
     {

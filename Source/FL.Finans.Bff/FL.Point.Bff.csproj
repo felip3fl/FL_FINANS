@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FL.Model\FL.Model.csproj" />
+    <ProjectReference Include="..\FL.Model\FL.Point.Model.csproj" />
   </ItemGroup>
 
 </Project>

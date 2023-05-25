@@ -1,4 +1,4 @@
-﻿namespace FL.Finans.Bff.Configuration
+﻿namespace FL.Point.Bff.Configuration
 {
     public static class DependencyInjectionConfig
     {

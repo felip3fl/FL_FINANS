@@ -1,8 +1,8 @@
-﻿using FL.Finans.Bff.Controllers.Base;
+﻿using FL.Point.Bff.Controllers.Base;
 using FL.Model;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FL.Finans.Bff.Controllers.V1
+namespace FL.Point.Bff.Controllers.V1
 {
     [ApiController]
     [Route("api/[controller]")]

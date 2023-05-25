@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace FL.Finans.Api.Controllers.Base
+namespace FL.Point.Api.Controllers.Base
 {
     public abstract class BaseController : Controller
     {

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FL.Data\FL.Data.csproj" />
-    <ProjectReference Include="..\FL.Model\FL.Model.csproj" />
+    <ProjectReference Include="..\FL.Data\FL.Point.Data.csproj" />
+    <ProjectReference Include="..\FL.Model\FL.Point.Model.csproj" />
   </ItemGroup>
 
   <ItemGroup>

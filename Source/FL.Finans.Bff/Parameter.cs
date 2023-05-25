@@ -1,4 +1,4 @@
-﻿namespace FL.Finans.Bff
+﻿namespace FL.Point.Bff
 {
     public class HttpClientParameter
     {
