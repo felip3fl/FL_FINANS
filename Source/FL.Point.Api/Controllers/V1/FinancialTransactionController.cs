@@ -1,4 +1,4 @@
-﻿using FL.Data.Inferfaces;
+﻿using FL.Point.Data.Inferfaces;
 using FL.Point.Api.Controllers.Base;
 using FL.Model;
 using Microsoft.AspNetCore.DataProtection.Repositories;

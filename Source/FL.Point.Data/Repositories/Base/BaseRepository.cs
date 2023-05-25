@@ -1,11 +1,11 @@
-﻿using FL.Data.Inferfaces.Base;
+﻿using FL.Point.Data.Inferfaces.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FL.Data.Repositories.Base
+namespace FL.Point.Data.Repositories.Base
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {

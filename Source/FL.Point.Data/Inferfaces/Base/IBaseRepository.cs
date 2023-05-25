@@ -1,4 +1,4 @@
-﻿namespace FL.Data.Inferfaces.Base
+﻿namespace FL.Point.Data.Inferfaces.Base
 {
     public interface IBaseRepository<T> where T : class
     {

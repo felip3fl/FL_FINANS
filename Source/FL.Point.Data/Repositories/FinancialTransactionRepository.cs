@@ -1,13 +1,13 @@
 ﻿using ExcelDataReader;
-using FL.Data.Inferfaces;
-using FL.Data.Repositories.Base;
+using FL.Point.Data.Inferfaces;
+using FL.Point.Data.Repositories.Base;
 using FL.Model;
 using System.Data;
 using System.IO;
 using System.Linq;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace FL.Data.Repositories
+namespace FL.Point.Data.Repositories
 {
     public class FinancialTransactionRepository : BaseRepository<FinancialTransaction>, IFinancialTransactionRepository
     {

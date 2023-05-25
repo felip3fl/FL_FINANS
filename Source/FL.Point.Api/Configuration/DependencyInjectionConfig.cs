@@ -1,5 +1,5 @@
-﻿using FL.Data.Inferfaces;
-using FL.Data.Repositories;
+﻿using FL.Point.Data.Inferfaces;
+using FL.Point.Data.Repositories;
 
 namespace FL.Point.Api.Configuration
 {
