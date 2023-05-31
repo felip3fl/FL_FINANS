@@ -1,5 +1,7 @@
 ﻿using FL.Model;
 using FL.Point.Api.Controllers.Base;
+using FL.Point.Data.Inferfaces;
+using FL.Point.Data.Repositories;
 using FL.Point.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
@@ -7,22 +9,37 @@ using System.Text.Json;
 
 namespace FL.Point.Api.Controllers.V1
 {
+    /// <summary>
+    /// This is the financial transaction controller
+    /// </summary>
+    [ApiController]
+    [Route("api/[controller]")]
     public class PointController : BaseController
     {
+        #region Properties
+
+        protected readonly IEletronicPointRepository _pointRepository;
+
+        #endregion
+
+        public PointController(IEletronicPointRepository pointRepository)
+        {
+            _pointRepository = pointRepository;
+        }
+
         #region Methods
 
         /// <summary>
-        /// Mark point
+        /// Create a eletronic point / Mark point
         /// </summary>
         /// <param name="eletronicPoint"></param>
         /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> Update(EletronicPoint eletronicPoint)
         {
-            if (eletronicPoint.Id == "")
-                AdicionarErroProcessamento("Erro - Objeto financialTransaction vazio");
+            await _pointRepository.Add(eletronicPoint);
 
-            return CustomResponse();
+            return Ok();
         }
 
         #endregion
