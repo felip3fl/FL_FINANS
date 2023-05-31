@@ -11,7 +11,7 @@ namespace FL.Point.Data.Repositories.Base
     {
         public Task Add(T entity)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public Task Delete(T entity)
