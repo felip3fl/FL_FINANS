@@ -14,7 +14,7 @@ namespace FL.Point.Api.Controllers.V1
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    public class PointController : BaseController
+    public class EletronicPointController : BaseController
     {
         #region Properties
 
@@ -22,7 +22,7 @@ namespace FL.Point.Api.Controllers.V1
 
         #endregion
 
-        public PointController(IEletronicPointRepository pointRepository)
+        public EletronicPointController(IEletronicPointRepository pointRepository)
         {
             _pointRepository = pointRepository;
         }
@@ -40,6 +40,14 @@ namespace FL.Point.Api.Controllers.V1
             await _pointRepository.Add(eletronicPoint);
 
             return Ok();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Get()
+        {
+            var result = await _pointRepository.GetAll();
+
+            return Ok(result);
         }
 
         #endregion

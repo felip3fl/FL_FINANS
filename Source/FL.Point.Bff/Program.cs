@@ -1,6 +1,8 @@
 using Microsoft.OpenApi.Models;
 using System.ComponentModel;
 using System.Xml.Linq;
+using Polly;
+using FL.Point.Bff.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(config =>
 {
     config.SwaggerDoc("v1", new OpenApiInfo
@@ -19,6 +22,8 @@ builder.Services.AddSwaggerGen(config =>
         License = new OpenApiLicense() { Name = "MIT", Url = new Uri(uriString: "https://opensource.org/1icenses/MIT")}
     });
 });
+
+builder.Services.ResolveDependencies();
 
 var app = builder.Build();
 

@@ -9,6 +9,7 @@ namespace FL.Point.Api.Configuration
         {
             #region INFRA
             services.AddScoped<IFinancialTransactionRepository, FinancialTransactionRepository>();
+            services.AddScoped<IEletronicPointRepository, EletronicPointRepository>();
             #endregion
 
             return services;

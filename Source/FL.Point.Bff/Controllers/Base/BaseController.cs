@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace FL.Point.Bff.Controllers.Base
 {
@@ -11,10 +10,10 @@ namespace FL.Point.Bff.Controllers.Base
 
         private readonly HttpClient _httpClient;
 
-        public BaseController()
+        public BaseController(HttpClient httpClient)
         {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:7053/api/FinancialTransaction/");
+            _httpClient = httpClient;
+            _httpClient.BaseAddress = new Uri("https://localhost:7053/api/EletronicPoint/");
         }
 
         /// <summary>
@@ -31,7 +30,7 @@ namespace FL.Point.Bff.Controllers.Base
             if (response != null)
             {
                 var contentResult = await response.Content.ReadAsStringAsync();
-                var output = JsonSerializer.Deserialize<T>(contentResult);
+                var output = JsonConvert.DeserializeObject<T>(contentResult);
                 return output;
             }
 
@@ -55,9 +54,16 @@ namespace FL.Point.Bff.Controllers.Base
         /// <typeparam name="T"></typeparam>
         /// <param name="endpoint"></param>
         /// <returns></returns>
-        protected async Task<T> Get<T>(String endpoint)
+        protected async Task<List<T>> Get<T>(String endpoint)
         {
             var response = await Get(endpoint);
+
+            if (response != null)
+            {
+                var contentResult = await response.Content.ReadAsStringAsync();
+                var output = JsonConvert.DeserializeObject<List<T>>(contentResult);
+                return output;
+            }
 
             return default;
         }
@@ -84,13 +90,12 @@ namespace FL.Point.Bff.Controllers.Base
         /// <returns></returns>
         protected async Task<T> PostAsync<T>(string endpoint, object objectSerialized, List<HttpClientParameter> header = null)
         {
-            var response = await PostAsync(endpoint, JsonSerializer.Serialize(objectSerialized), header);
+            var response = await PostAsync(endpoint, JsonConvert.SerializeObject(objectSerialized), header);
 
-            var jsonOption = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             if (response == null)
             {
                 var contentResult = await response.Content.ReadAsStringAsync();
-                var output = JsonSerializer.Deserialize<T>(contentResult, jsonOption);
+                var output = JsonConvert.DeserializeObject<T>(contentResult);
                 return output;
             }
 
@@ -115,7 +120,7 @@ namespace FL.Point.Bff.Controllers.Base
         /// <returns></returns>
         protected async Task<HttpResponseMessage> PutAsync(string endpoint, object input)
         {
-            var objectSerialized = input == null ? String.Empty : JsonSerializer.Serialize(input);
+            var objectSerialized = input == null ? String.Empty : JsonConvert.SerializeObject(input);
 
             var request = new HttpRequestMessage
             {
