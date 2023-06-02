@@ -1,4 +1,5 @@
 ﻿using FL.Point.Data.Inferfaces.Base;
+using FL.Point.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,10 @@ namespace FL.Point.Data.Repositories.Base
 
         public Task<List<T>> GetAll()
         {
-            throw new NotImplementedException();
+            var listEletronicPoint = new List<T>() ;
+            var result = Task.FromResult(listEletronicPoint);
+
+            return result;
         }
     }
 }
