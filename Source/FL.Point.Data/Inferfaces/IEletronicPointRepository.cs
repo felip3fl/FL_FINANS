@@ -5,7 +5,7 @@ using FL.Point.Model;
 
 namespace FL.Point.Data.Inferfaces
 {
-    public interface IPointRepository : IBaseRepository<EletronicPoint>
+    public interface IEletronicPointRepository : IBaseRepository<EletronicPoint>
     {
 
     }

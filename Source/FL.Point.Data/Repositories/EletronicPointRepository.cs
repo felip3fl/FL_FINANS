@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FL.Point.Data.Repositories
 {
-    public class EletronicPointRepository : BaseRepository<EletronicPoint>, IPointRepository
+    public class EletronicPointRepository : BaseRepository<EletronicPoint>, IEletronicPointRepository
     {
 
     }
