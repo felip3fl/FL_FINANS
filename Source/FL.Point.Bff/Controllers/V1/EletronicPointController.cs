@@ -31,9 +31,16 @@ namespace FL.Point.Bff.Controllers.V1
         [HttpGet]
         public async Task<ActionResult<EletronicPoint>> GetAll()
         {
-            var output = await Get<EletronicPoint>("");
-
-            return Ok(output);
+            try
+            {
+                var output = await Get<EletronicPoint>("");
+                return Ok(output);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            
         }
 
         /// <summary>
