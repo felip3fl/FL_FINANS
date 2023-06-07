@@ -114,16 +114,6 @@ export abstract class BaseHttpService<T> {
       .pipe(retry(this.maxRetries), catchError(this.handleError));
   }
 
-  filter(endpoint: string, item: T): Observable<T[]> {
-    this.setEndpoint('POST', endpoint);
-
-    //!environment.production ? console.log('payload', JSON.stringify(item)) : null
-
-    return this.httpClient
-      .post<T[]>(this.getEndpoint(), JSON.stringify(item), this.httpOptions)
-      .pipe(retry(this.maxRetries), catchError(this.handleError));
-  }
-
   post(endpoint: string, item: T): Observable<T> {
     this.setEndpoint('POST', endpoint);
 
