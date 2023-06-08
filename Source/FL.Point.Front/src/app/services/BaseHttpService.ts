@@ -4,9 +4,10 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, } from '@angular/common/htt
 import { retry, catchError } from 'rxjs/operators';
 import { AppComponent } from '../app.component';
 import { Injectable, ViewChild } from '@angular/core';
+import { BaseLogService } from './BaseLogService';
 
 @Injectable({ providedIn: 'root' })
-export abstract class BaseHttpService<T> {
+export abstract class BaseHttpService<T> extends BaseLogService {
   public modalTitle: string = '';
   public modalMessage: string = '';
   public modalType: string = '';
@@ -24,7 +25,9 @@ export abstract class BaseHttpService<T> {
   constructor(
     private httpClient: HttpClient,
     private appComponent: AppComponent
-  ) { }
+  ) { 
+    super();
+  }
 
   getEndpoint(): string {
     return `${this.baseUrl}${this.endpointUrl}`;
