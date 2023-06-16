@@ -12,6 +12,7 @@ namespace FL.Point.Data.Repositories.Base
     {
         public Task Add(T entity)
         {
+
             return default;
         }
 
