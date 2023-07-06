@@ -2,7 +2,6 @@ import { environment } from 'src/environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders, } from '@angular/common/http';
 import { retry, catchError } from 'rxjs/operators';
-import { AppComponent } from '../app.component';
 import { Injectable, ViewChild } from '@angular/core';
 import { BaseLogService } from './BaseLogService';
 
@@ -24,7 +23,6 @@ export abstract class BaseHttpService<T> extends BaseLogService {
 
   constructor(
     private httpClient: HttpClient,
-    private appComponent: AppComponent
   ) { 
     super();
   }
