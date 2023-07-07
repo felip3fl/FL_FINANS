@@ -1,9 +1,9 @@
-import { eletronicPointType } from "./eletronicPointType"
+import { EletronicPointType } from "./eletronicPointType"
 
-export class eletronicPoint {
+export interface EletronicPoint {
     id       : number
     markData : Date
-    type     : eletronicPointType
+    type     : EletronicPointType
     user     : bigint
     comment  : string
     createdAt: Date

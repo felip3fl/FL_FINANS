@@ -1,4 +1,4 @@
-export class eletronicPointType {
+export interface EletronicPointType {
     id       : number
     name     : string
     createdAt: Date
