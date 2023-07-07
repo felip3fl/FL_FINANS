@@ -1,19 +1,34 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { EletronicPointService } from "../services/eletronic-point.service";
+import { EletronicPoint } from "src/app/models/eletronicPoint";
 
 @Component({
     selector: 'details',
     templateUrl: './details.component.html'
   })
 
-export class Details implements OnInit {
+export class DetailsComponent implements OnInit {
 
     @ViewChild('canvas', {static: true}) myCanvas! : ElementRef;
 
-    constructor() {
+    public eletronicPoint: EletronicPoint[] = [];
+
+    constructor(private eletronicPointService: EletronicPointService) {
     }
 
     ngOnInit(): void {
         this.createCanvas();
+        this.getAll();
+    }
+
+    getAll(){
+      this.eletronicPointService.get('eletronicPoint').subscribe(
+        (eletronicPoints:EletronicPoint[]) =>
+        {
+          this.eletronicPoint = eletronicPoints;
+          console.table(this.eletronicPoint);
+        }
+      );
     }
 
     createCanvas(){

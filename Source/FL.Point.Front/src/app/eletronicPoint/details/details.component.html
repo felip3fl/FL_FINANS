@@ -2,4 +2,16 @@
     
 </canvas>
 
-eu sou detail
+ 
+<table>
+    <thead>
+        <th>comment</th>
+        <th>user</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let point of eletronicPoint;">
+            <td>{{point.comment}}</td>
+            <td>{{point.user}}</td>
+        </tr>
+    </tbody>
+</table>
