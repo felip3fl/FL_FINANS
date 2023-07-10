@@ -7,14 +7,14 @@ namespace FL.Point.Model
         public string Name { get; set; }
 
         //Contrutor do EF
-        protected EletronicPointType()
-        {
+        //protected EletronicPointType()
+        //{
 
-        }
+        //}
 
-        public EletronicPointType(string name)
-        {
-            name = Name;
-        }
+        //public EletronicPointType(string name)
+        //{
+        //    name = Name;
+        //}
     }
 }
