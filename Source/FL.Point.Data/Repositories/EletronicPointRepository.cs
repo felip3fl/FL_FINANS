@@ -22,7 +22,7 @@ namespace FL.Point.Data.Repositories
 
         public async Task Add(EletronicPoint eletronicPoint)
         {
-            await _dataBaseContext.EletronicPoints.Add(eletronicPoint);
+            _dataBaseContext.EletronicPoints.Add(eletronicPoint);
             await Save();
         }
 

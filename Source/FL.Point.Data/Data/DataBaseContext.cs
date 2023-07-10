@@ -14,13 +14,15 @@ namespace FL.Point.Data.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data source=(localdb)\\mssqllocaldb;Initial Catalog=CursoEFCore;Integrated Security=true");
+            optionsBuilder.UseSqlServer("Data source=(localdb)\\mssqllocaldb;Initial Catalog=Point;Integrated Security=true");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Modelo novo de configurar as tabelas, método com 1 linha:
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataBaseContext).Assembly);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

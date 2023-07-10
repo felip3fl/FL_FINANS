@@ -1,4 +1,5 @@
 using FL.Point.Api.Configuration;
+using FL.Point.Data.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +8,15 @@ builder.Services.AddSwaggerConfiguration();
 builder.Services.ResolveDependencies();
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<DataBaseContext>();
+
+    context.Database.EnsureCreated();
+}
+
+    // Configure the HTTP request pipeline.
 app.UseSwaggerConfiguration();
 app.UseApiConfiguration(app.Environment);
 app.MapControllers();

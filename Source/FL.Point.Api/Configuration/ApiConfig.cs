@@ -1,4 +1,7 @@
-﻿namespace FL.Point.Api.Configuration
+﻿using FL.Point.Data.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace FL.Point.Api.Configuration
 {
     public static class ApiConfig
     {
@@ -6,6 +9,8 @@
         {
             services.AddEndpointsApiExplorer();
             services.AddControllers();
+
+            services.AddDbContext<DataBaseContext>();
 
             return services;
         }
