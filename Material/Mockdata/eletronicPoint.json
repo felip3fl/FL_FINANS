@@ -1,0 +1,22 @@
+{
+    "eletronicPoint": [
+        {
+            "id": "2345",
+            "markData": "2012-04-23T18:25:43.511Z",
+            "type": "",
+            "user": "Felipe",
+            "comment": "3 commant",
+            "createdAt": "2012-04-23T18:25:43.511Z",
+            "deletedAt": "2012-04-23T18:25:43.511Z"
+        },
+        {
+            "id": "2346",
+            "markData": "2012-04-23T18:25:43.511Z",
+            "type": "",
+            "user": "Joao",
+            "comment": "Test 2 commant",
+            "createdAt": "2012-04-23T18:25:43.511Z",
+            "deletedAt": "2012-04-23T18:25:43.511Z"
+        }
+    ]
+}
