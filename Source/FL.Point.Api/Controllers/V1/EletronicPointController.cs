@@ -42,25 +42,19 @@ namespace FL.Point.Api.Controllers.V1
             return Ok();
         }
 
+        /// <summary>
+        /// Get all EletronicPoint Transaction
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult> Get()
+        [ProducesResponseType(typeof(List<EletronicPoint>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<List<EletronicPoint>>> Get()
         {
             var result = await _pointRepository.GetAll();
 
             return Ok(result);
         }
-
-        ///// <summary>
-        ///// Get all Financial Transaction
-        ///// </summary>
-        ///// <returns></returns>
-        //[HttpGet("GetAllFinancialTransactions")]
-        //[ProducesResponseType(typeof(List<FinancialTransaction>), StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<ActionResult<List<FinancialTransaction>>> GetAll()
-        //{
-        //    return await _financialTransactionRepository.GetAll();
-        //}
 
         ///// <summary>
         ///// Get a Financial Transaction by Id
