@@ -16,9 +16,9 @@
 
 ## :hammer: Funcionalidades do projeto
 
-- `Funcionalidade 1`: ???
-- `Funcionalidade 2`: ???
-- `Funcionalidade 3`: ???
+- `Funcionalidade 1`: Marcação de ponto
+- `Funcionalidade 2`: Histórico de Marcação 
+- `Funcionalidade 3`: Controle de horário
 
 <BR>
   
