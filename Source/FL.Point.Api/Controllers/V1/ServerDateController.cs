@@ -19,7 +19,9 @@ namespace FL.Point.Api.Controllers.V1
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult> Get()
+        [ProducesResponseType(typeof(DateTime), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<DateTime>> Get()
         {
             var result = DateTime.Now;
 
