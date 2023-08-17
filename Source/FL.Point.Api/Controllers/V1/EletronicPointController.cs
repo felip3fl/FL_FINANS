@@ -35,6 +35,8 @@ namespace FL.Point.Api.Controllers.V1
         /// <param name="eletronicPoint"></param>
         /// <returns></returns>
         [HttpPost]
+        [ProducesResponseType(typeof(ActionResult), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Update(EletronicPoint eletronicPoint)
         {
             await _pointRepository.Add(eletronicPoint);
