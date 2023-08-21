@@ -76,16 +76,17 @@ namespace FL.Point.Api.Controllers.V1
         ///// </summary>
         ///// <param name="financialTransaction"></param>
         ///// <returns></returns>
-        //[HttpPut]
-        //public async Task<ActionResult<List<String>>> Put(FinancialTransaction financialTransaction)
-        //{
-        //    var transaction = new FinancialTransaction();
+        
+        [HttpPut]
+        public async Task<ActionResult> Put()
+        {
+            var transaction = new EletronicPoint();
 
-        //    if (transaction == null)
-        //        AdicionarErroProcessamento("Erro - Objeto vazio");
+            if (transaction == null)
+                AdicionarErroProcessamento("Erro - Objeto vazio");
 
-        //    return CustomResponse();
-        //}
+            return CustomResponse();
+        }
 
         ///// <summary>
         ///// 
