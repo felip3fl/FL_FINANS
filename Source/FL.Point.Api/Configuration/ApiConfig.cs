@@ -12,6 +12,19 @@ namespace FL.Point.Api.Configuration
 
             services.AddDbContext<DataBaseContext>();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Development", builder =>
+                    builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    );
+
+
+            });
+
             return services;
         }
 
