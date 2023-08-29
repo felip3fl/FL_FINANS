@@ -7,23 +7,25 @@ namespace FL.Point.Api.Configuration
     {
         public static IServiceCollection AddApiConfiguration(this IServiceCollection services)
         {
+
+            services.AddCors(
+                options =>
+                {
+                    options.AddDefaultPolicy( builder =>
+                    builder
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .WithOrigins("https://www.google.com.br/", "http://www.google.com.br/")
+                    .SetIsOriginAllowed(origin => true));
+
+                }
+            );
+
             services.AddEndpointsApiExplorer();
             services.AddControllers();
 
             services.AddDbContext<DataBaseContext>();
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("Development", builder =>
-                    builder
-                    .AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials()
-                    );
-
-
-            });
 
             return services;
         }
@@ -43,3 +45,4 @@ namespace FL.Point.Api.Configuration
         }
     }
 }
+
