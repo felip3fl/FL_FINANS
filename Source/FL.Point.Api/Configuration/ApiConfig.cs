@@ -11,12 +11,12 @@ namespace FL.Point.Api.Configuration
             services.AddCors(
                 options =>
                 {
-                    options.AddDefaultPolicy( builder =>
+                    options.AddPolicy( "AllowOrigin", builder =>
                     builder
                     .AllowAnyHeader()
                     .AllowAnyMethod()
-                    .WithOrigins("https://www.google.com.br/", "http://www.google.com.br/")
-                    .SetIsOriginAllowed(origin => true));
+                    .AllowAnyOrigin()
+                    );
 
                 }
             );
@@ -25,7 +25,6 @@ namespace FL.Point.Api.Configuration
             services.AddControllers();
 
             services.AddDbContext<DataBaseContext>();
-
 
             return services;
         }
