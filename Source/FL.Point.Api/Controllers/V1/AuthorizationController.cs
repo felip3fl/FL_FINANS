@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FL.Point.Api.Controllers.V1
 {
-    public class GoogleAuthController : Controller
+    public class AuthorizationController : Controller
     {
 
         private IGoogleCalendarService _googleCalendarService;
-        public GoogleAuthController(IGoogleCalendarService googleCalendarService)
+        public AuthorizationController(IGoogleCalendarService googleCalendarService)
 
         {
             _googleCalendarService = googleCalendarService;
