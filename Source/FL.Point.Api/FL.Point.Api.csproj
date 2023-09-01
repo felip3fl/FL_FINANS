@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FL.Point.Data\FL.Point.Data.csproj" />
+    <ProjectReference Include="..\FL.Point.GoogleCalendarApi\FL.Point.GoogleCalendarApi.csproj" />
     <ProjectReference Include="..\FL.Point.Model\FL.Point.Model.csproj" />
   </ItemGroup>
 
