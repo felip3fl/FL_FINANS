@@ -21,4 +21,6 @@ app.UseSwaggerConfiguration();
 app.UseApiConfiguration(app.Environment);
 app.MapControllers();
 
+app.UseCors("AllowOrigin");
+
 app.Run();
