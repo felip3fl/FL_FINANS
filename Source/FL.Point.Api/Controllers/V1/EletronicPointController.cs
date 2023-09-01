@@ -2,7 +2,9 @@
 using FL.Point.Api.Controllers.Base;
 using FL.Point.Data.Inferfaces;
 using FL.Point.Data.Repositories;
+using FL.Point.GoogleCalendarApi;
 using FL.Point.Model;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Text.Json;
@@ -14,6 +16,7 @@ namespace FL.Point.Api.Controllers.V1
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
+    [EnableCors("AllowOrigin")]
     public class EletronicPointController : BaseController
     {
         #region Properties
@@ -71,6 +74,13 @@ namespace FL.Point.Api.Controllers.V1
                 AdicionarErroProcessamento("Erro - Objeto vazio");
 
             return CustomResponse();
+        }
+
+        [HttpGet("teste")]
+        public async Task GoogleCalendar()
+        {
+            GoogleCalendarApiClass teste = new GoogleCalendarApiClass();
+            teste.ListAll();
         }
 
         #endregion
