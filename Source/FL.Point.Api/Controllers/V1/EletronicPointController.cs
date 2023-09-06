@@ -76,13 +76,6 @@ namespace FL.Point.Api.Controllers.V1
             return CustomResponse();
         }
 
-        [HttpGet("teste")]
-        public async Task GoogleCalendar()
-        {
-            GoogleCalendarApiClass teste = new GoogleCalendarApiClass();
-            teste.ListAll();
-        }
-
         #endregion
     }
 }
