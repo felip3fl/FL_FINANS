@@ -45,7 +45,7 @@ Use o ``Visual Studio 2022`` para usar este projeto
 &nbsp;&nbsp;<img width="80"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg">
 </p>
  
-- ``ASP.NET 6``
+- ``.NET 7`` (Atualizado em 06/09/2023)
 - ``Paradigma de orientação a objetos``
 
 <BR>  
