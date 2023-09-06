@@ -26,7 +26,7 @@ namespace FL.Point.Api.Controllers.V1
         [Route("/auth/google")]
         public async Task<IActionResult> GoogleAuth()
         {
-            return Redirect(_googleCalendarService.GetAuthCode());
+            return Redirect(_googleCalendarService.GetAuthCode(""));
         }
 
         [HttpGet]
@@ -37,7 +37,7 @@ namespace FL.Point.Api.Controllers.V1
             string scope = HttpContext.Request.Query["scope"];
 
             //get token method
-            var token = await _googleCalendarService.GetTokens(code);
+            var token = await _googleCalendarService.GetTokens(code, "", "");
             return Ok(token);
         }
 

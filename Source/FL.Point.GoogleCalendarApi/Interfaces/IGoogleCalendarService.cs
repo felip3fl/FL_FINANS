@@ -9,9 +9,9 @@ namespace FL.Point.GoogleCalendarApi.Interfaces
 {
     public interface IGoogleCalendarService
     {
-        string GetAuthCode();
+        string GetAuthCode(string clientID);
 
-        Task<GoogleTokenResponse> GetTokens(string code);
+        Task<GoogleTokenResponse> GetTokens(string code, string clientID, string clientSecret);
         string AddToGoogleCalendar(GoogleCalendarReqDTO googleCalendarReqDTO);
     }
 }
