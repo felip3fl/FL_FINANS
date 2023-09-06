@@ -22,6 +22,7 @@ using (var scope = app.Services.CreateScope())
 
     // Configure the HTTP request pipeline.
 app.UseSwaggerConfiguration();
+app.SettingConfiguration();
 app.UseApiConfiguration(app.Environment);
 app.MapControllers();
 
