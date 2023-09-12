@@ -7,9 +7,15 @@ namespace FL.Point.Api.Configuration
     {
         public static IServiceCollection ResolveDependencies(this IServiceCollection services)
         {
-            #region INFRA
+            #region API
             services.AddScoped<IFinancialTransactionRepository, FinancialTransactionRepository>();
             services.AddScoped<IEletronicPointRepository, EletronicPointRepository>();
+            #endregion
+
+            #region Data
+            #endregion
+
+            #region Application
             #endregion
 
             return services;
