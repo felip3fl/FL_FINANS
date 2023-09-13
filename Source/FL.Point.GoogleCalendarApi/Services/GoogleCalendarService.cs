@@ -20,7 +20,7 @@ namespace FL.Point.GoogleCalendarApi.Services
             _httpClient = new HttpClient();
         }
 
-        public string GetAuthCode(string clientID)
+        public string GetAuthCode(string clientID, string unreservedChars)
         {
             try
             {
@@ -30,7 +30,7 @@ namespace FL.Point.GoogleCalendarApi.Services
                 string response_type = "code";
                 string scope = "https://www.googleapis.com/auth/calendar";
                 string access_type = "offline";
-                string redirect_uri_encode = Method.urlEncodeForGoogle(redirectURL);
+                string redirect_uri_encode = Method.urlEncodeForGoogle(redirectURL, unreservedChars);
                 var mainURL = string.Format(scopeURL1, redirect_uri_encode, prompt, response_type, clientID, scope, access_type);
 
                 return mainURL;
