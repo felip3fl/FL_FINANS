@@ -16,13 +16,6 @@ namespace FL.Point.Api.Controllers.V1
         }
 
         [HttpGet]
-        [Route("/user/index")]
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpGet]
         [Route("/auth/google")]
         public async Task<IActionResult> GoogleAuth()
         {
