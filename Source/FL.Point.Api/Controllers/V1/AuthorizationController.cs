@@ -15,6 +15,10 @@ namespace FL.Point.Api.Controllers.V1
             _googleCalendarService = googleCalendarService;
         }
 
+        /// <summary>
+        /// Use this to authenticate on Google account
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("/auth/google")]
         public async Task<IActionResult> GoogleAuth()
@@ -22,6 +26,10 @@ namespace FL.Point.Api.Controllers.V1
             return Redirect(_googleCalendarService.GetAuthCode("", ""));
         }
 
+        /// <summary>
+        /// If authenticate successfully, Google API will use this 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("/auth/callback")]
         public async Task<IActionResult> Callback()
@@ -34,6 +42,11 @@ namespace FL.Point.Api.Controllers.V1
             return Ok(token);
         }
 
+        /// <summary>
+        /// Returns calendar Events
+        /// </summary>
+        /// <param name="calendarEventReqDTO"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("/user/calendarevent")]
         public async Task<IActionResult> AddCalendarEvent([FromBody] GoogleCalendarReqDTO calendarEventReqDTO)
