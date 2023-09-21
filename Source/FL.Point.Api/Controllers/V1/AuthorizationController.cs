@@ -1,5 +1,8 @@
-﻿using FL.Point.GoogleCalendarApi.Interfaces;
+﻿using FL.Point.Api.Configuration;
+using FL.Point.Api.Settings;
+using FL.Point.GoogleCalendarApi.Interfaces;
 using FL.Point.Model;
+using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +12,8 @@ namespace FL.Point.Api.Controllers.V1
     {
 
         private IGoogleCalendarService _googleCalendarService;
+        private GoogleAuthenticatorSettings _authenticatorSettings = SettingsConfig.googleAuthenticator;
+
         public AuthorizationController(IGoogleCalendarService googleCalendarService)
 
         {
@@ -23,7 +28,7 @@ namespace FL.Point.Api.Controllers.V1
         [Route("/auth/google")]
         public async Task<IActionResult> GoogleAuth()
         {
-            return Redirect(_googleCalendarService.GetAuthCode("", ""));
+            return Redirect(_googleCalendarService.GetAuthCode(_authenticatorSettings.ClientID, _authenticatorSettings.UnreservedChars));
         }
 
         /// <summary>
@@ -38,7 +43,7 @@ namespace FL.Point.Api.Controllers.V1
             string scope = HttpContext.Request.Query["scope"];
 
             //get token method
-            var token = await _googleCalendarService.GetTokens(code, "", "");
+            var token = await _googleCalendarService.GetTokens(code, _authenticatorSettings.ClientID, _authenticatorSettings.ClientSecret);
             return Ok(token);
         }
 
@@ -51,7 +56,7 @@ namespace FL.Point.Api.Controllers.V1
         [Route("/user/calendarevent")]
         public async Task<IActionResult> AddCalendarEvent([FromBody] GoogleCalendarReqDTO calendarEventReqDTO)
         {
-            var data = _googleCalendarService.AddToGoogleCalendar(calendarEventReqDTO);
+            var data = _googleCalendarService.AddToGoogleCalendar(calendarEventReqDTO, _authenticatorSettings.ClientID, _authenticatorSettings.ClientSecret);
             return Ok(data);
         }
     }

@@ -61,7 +61,7 @@ namespace FL.Point.GoogleCalendarApi.Services
             }
         }
 
-        public string AddToGoogleCalendar(GoogleCalendarReqDTO googleCalendarReqDTO)
+        public string AddToGoogleCalendar(GoogleCalendarReqDTO googleCalendarReqDTO, string clientId, string clientSecret)
         {
             try
             {
@@ -74,8 +74,8 @@ namespace FL.Point.GoogleCalendarApi.Services
                   {
                       ClientSecrets = new ClientSecrets
                       {
-                          ClientId = "___.apps.googleusercontent.com",
-                          ClientSecret = "__"
+                          ClientId = clientId,
+                          ClientSecret = clientSecret
                       }
 
                   }), "user", token);
