@@ -14,6 +14,8 @@ namespace FL.Point.Api.Controllers.V1
         private IGoogleCalendarService _googleCalendarService;
         private GoogleAuthenticatorSettings _authenticatorSettings = SettingsConfig.googleAuthenticator;
 
+        private static GoogleTokenResponse token;
+
         public AuthorizationController(IGoogleCalendarService googleCalendarService)
 
         {
@@ -43,7 +45,7 @@ namespace FL.Point.Api.Controllers.V1
             string scope = HttpContext.Request.Query["scope"];
 
             //get token method
-            var token = await _googleCalendarService.GetTokens(code, _authenticatorSettings.ClientID, _authenticatorSettings.ClientSecret);
+            token = await _googleCalendarService.GetTokens(code, _authenticatorSettings.ClientID, _authenticatorSettings.ClientSecret);
             return Ok(token);
         }
 
@@ -56,6 +58,7 @@ namespace FL.Point.Api.Controllers.V1
         [Route("/user/calendarevent")]
         public async Task<IActionResult> AddCalendarEvent([FromBody] GoogleCalendarReqDTO calendarEventReqDTO)
         {
+            calendarEventReqDTO.refreshToken = token.refresh_token;
             var data = _googleCalendarService.AddToGoogleCalendar(calendarEventReqDTO, _authenticatorSettings.ClientID, _authenticatorSettings.ClientSecret);
             return Ok(data);
         }
