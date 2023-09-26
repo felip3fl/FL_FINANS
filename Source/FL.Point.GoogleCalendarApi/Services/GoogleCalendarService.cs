@@ -41,6 +41,11 @@ namespace FL.Point.GoogleCalendarApi.Services
             }
         }
 
+        public async Task<GoogleTokenResponse> GetAndSaveTokens(string code, string clientId, string clientSecret)
+        {
+            return await GetTokens(code, clientId,clientSecret);
+        }
+
         public async Task<GoogleTokenResponse> GetTokens(string code, string clientId, string clientSecret)
         {
             var redirectURL = "https://localhost:7053/auth/callback";
