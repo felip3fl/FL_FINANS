@@ -49,18 +49,13 @@ namespace FL.Point.Api.Controllers.V1
             return Ok(token);
         }
 
-        /// <summary>
-        /// Returns calendar Events
-        /// </summary>
-        /// <param name="calendarEventReqDTO"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route("/user/calendarevent")]
-        public async Task<IActionResult> AddCalendarEvent([FromBody] GoogleCalendarReqDTO calendarEventReqDTO)
-        {
-            calendarEventReqDTO.refreshToken = token.refresh_token;
-            var data = _googleCalendarService.AddToGoogleCalendar(calendarEventReqDTO, _authenticatorSettings.ClientID, _authenticatorSettings.ClientSecret);
-            return Ok(data);
-        }
+        //[HttpPost]
+        //[Route("/user/calendarevent")]
+        //public async Task<IActionResult> AddCalendarEvent([FromBody] GoogleCalendarReqDTO calendarEventReqDTO)
+        //{
+        //    calendarEventReqDTO.refreshToken = token.refresh_token;
+        //    var data = _googleCalendarService.AddToGoogleCalendar(calendarEventReqDTO, _authenticatorSettings.ClientID, _authenticatorSettings.ClientSecret);
+        //    return Ok(data);
+        //}
     }
 }
