@@ -3,6 +3,8 @@ using FL.Point.Api.Controllers.Base;
 using FL.Point.Data.Inferfaces;
 using FL.Point.Data.Repositories;
 using FL.Point.GoogleCalendarApi;
+using FL.Point.GoogleCalendarApi.Interfaces;
+using FL.Point.GoogleCalendarApi.Services;
 using FL.Point.Model;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -22,11 +24,14 @@ namespace FL.Point.Api.Controllers.V1
         #region Properties
 
         protected readonly IEletronicPointRepository _pointRepository;
+        private IGoogleCalendarService _googleCalendarService;
 
         #endregion
 
-        public EletronicPointController(IEletronicPointRepository pointRepository)
+        public EletronicPointController(IEletronicPointRepository pointRepository, IGoogleCalendarService googleCalendarService)
+
         {
+            _googleCalendarService = googleCalendarService;
             _pointRepository = pointRepository;
         }
 
@@ -74,6 +79,17 @@ namespace FL.Point.Api.Controllers.V1
                 AdicionarErroProcessamento("Erro - Objeto vazio");
 
             return CustomResponse();
+        }
+
+        /// <summary>
+        /// Mark point / Create a new point
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult> Post()
+        {
+            var data = _googleCalendarService.AddToGoogleCalendar(calendarEventReqDTO, _authenticatorSettings.ClientID, _authenticatorSettings.ClientSecret);
+            return Ok(data);
         }
 
         #endregion
