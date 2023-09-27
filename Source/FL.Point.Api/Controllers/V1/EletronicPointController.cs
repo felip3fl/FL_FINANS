@@ -47,7 +47,8 @@ namespace FL.Point.Api.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Update(EletronicPoint eletronicPoint)
         {
-            await _pointRepository.Add(eletronicPoint);
+            GoogleCalendarReqDTO calendarEventReqDTO = new GoogleCalendarReqDTO();
+            var data = _googleCalendarService.AddToGoogleCalendar(calendarEventReqDTO);
 
             return Ok();
         }
@@ -81,16 +82,7 @@ namespace FL.Point.Api.Controllers.V1
             return CustomResponse();
         }
 
-        /// <summary>
-        /// Mark point / Create a new point
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost]
-        public async Task<ActionResult> Post()
-        {
-            var data = _googleCalendarService.AddToGoogleCalendar(calendarEventReqDTO, _authenticatorSettings.ClientID, _authenticatorSettings.ClientSecret);
-            return Ok(data);
-        }
+
 
         #endregion
     }
