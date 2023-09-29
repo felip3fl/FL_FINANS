@@ -12,6 +12,7 @@ namespace FL.Point.GoogleCalendarApi.Interfaces
         string GetAuthCode(string clientID, string unreservedChars);
 
         Task<GoogleTokenResponse> GetTokens(string code, string clientID, string clientSecret);
-        string AddToGoogleCalendar(GoogleCalendarReqDTO googleCalendarReqDTO, string clientID, string clientSecret);
+        Task<GoogleTokenResponse> GetAndSaveTokens(string code, string clientID, string clientSecret);
+        string AddToGoogleCalendar(GoogleCalendarReqDTO googleCalendarReqDTO);
     }
 }
