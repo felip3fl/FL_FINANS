@@ -1,11 +1,13 @@
 ﻿using FL.Point.GoogleCalendarApi.Interfaces;
 using FL.Point.Model;
+using FL.Point.Model.Settings;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Calendar.v3;
 using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
+using Microsoft.Extensions.Options;
 using System.Text;
 
 namespace FL.Point.GoogleCalendarApi.Services
@@ -14,10 +16,15 @@ namespace FL.Point.GoogleCalendarApi.Services
     {
 
         private readonly HttpClient _httpClient;
+        private Task<GoogleTokenResponse> _googleCalendarReqDTO;
+        private string _cliendId;
+        private string _clientSecret;
 
-        public GoogleCalendarService()
+        public GoogleCalendarService(IOptions<GoogleAuthenticatorSettings> settings)
         {
             _httpClient = new HttpClient();
+            _cliendId = settings.Value.ClientID;
+            _clientSecret = settings.Value.ClientID;
         }
 
         public string GetAuthCode(string clientID, string unreservedChars)
@@ -43,7 +50,8 @@ namespace FL.Point.GoogleCalendarApi.Services
 
         public async Task<GoogleTokenResponse> GetAndSaveTokens(string code, string clientId, string clientSecret)
         {
-            return await GetTokens(code, clientId,clientSecret);
+            _googleCalendarReqDTO = GetTokens(code, clientId,clientSecret);
+            return await _googleCalendarReqDTO;
         }
 
         public async Task<GoogleTokenResponse> GetTokens(string code, string clientId, string clientSecret)
@@ -57,6 +65,7 @@ namespace FL.Point.GoogleCalendarApi.Services
             if (response.IsSuccessStatusCode)
             {
                 var tokenResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<GoogleTokenResponse>(responseContent);
+                tokenResponse.generatedAt = DateTime.Now;
                 return tokenResponse;
             }
             else
@@ -66,7 +75,7 @@ namespace FL.Point.GoogleCalendarApi.Services
             }
         }
 
-        public string AddToGoogleCalendar(GoogleCalendarReqDTO googleCalendarReqDTO, string clientId, string clientSecret)
+        public string AddToGoogleCalendar(GoogleCalendarReqDTO googleCalendarReqDTO)
         {
             try
             {
@@ -79,8 +88,8 @@ namespace FL.Point.GoogleCalendarApi.Services
                   {
                       ClientSecrets = new ClientSecrets
                       {
-                          ClientId = clientId,
-                          ClientSecret = clientSecret
+                          ClientId = _cliendId,
+                          ClientSecret = _clientSecret
                       }
 
                   }), "user", token);
