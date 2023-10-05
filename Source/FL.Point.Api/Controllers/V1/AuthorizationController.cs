@@ -45,7 +45,7 @@ namespace FL.Point.Api.Controllers.V1
             string scope = HttpContext.Request.Query["scope"];
 
             //get token method
-            token = await _googleCalendarService.GetTokens(code, _authenticatorSettings.ClientID, _authenticatorSettings.ClientSecret);
+            token = await _googleCalendarService.GetAndSaveTokens(code, _authenticatorSettings.ClientID, _authenticatorSettings.ClientSecret);
             return Ok(token);
         }
 
