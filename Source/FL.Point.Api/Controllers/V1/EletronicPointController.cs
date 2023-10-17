@@ -47,10 +47,19 @@ namespace FL.Point.Api.Controllers.V1
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Update(EletronicPoint eletronicPoint)
         {
-            GoogleCalendarReqDTO calendarEventReqDTO = new GoogleCalendarReqDTO();
-            var data = _googleCalendarService.AddToGoogleCalendar(calendarEventReqDTO);
+            try
+            {
+                GoogleCalendarReqDTO calendarEventReqDTO = new GoogleCalendarReqDTO();
+                var data = _googleCalendarService.AddToGoogleCalendar(calendarEventReqDTO);
 
-            return Ok();
+                return Ok();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         /// <summary>
