@@ -43,6 +43,8 @@ Use o ``Visual Studio 2022`` para usar este projeto
 &nbsp;&nbsp;<img width="80"  src="https://raw.githubusercontent.com/felip3fl/felip3fl/1a6a66b6a143aab342cf2df18f56d8c1c7e6c8fb/Material/Icon/visual-studio.svg">
 &nbsp;&nbsp;<img width="80" src="https://raw.githubusercontent.com/felip3fl/felip3fl/1a6a66b6a143aab342cf2df18f56d8c1c7e6c8fb/Material/Icon/vscode.svg">
 &nbsp;&nbsp;<img width="80"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg">
+&nbsp;&nbsp;<img width="80" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-plain.svg">
+&nbsp;&nbsp;<img width="80"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg">
 </p>
  
 - ``.NET 7`` (Atualizado em 06/09/2023)
