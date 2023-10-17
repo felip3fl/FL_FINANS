@@ -46,6 +46,7 @@ Use o ``Visual Studio 2022`` para usar este projeto
 </p>
  
 - ``.NET 7`` (Atualizado em 06/09/2023)
+- ``Angular 16`` (Atualizado em 06/09/2023)
 - ``Paradigma de orientação a objetos``
 
 <BR>  
