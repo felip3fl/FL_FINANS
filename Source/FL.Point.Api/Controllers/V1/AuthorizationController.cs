@@ -1,7 +1,7 @@
 ﻿using FL.Point.Api.Configuration;
-using FL.Point.Api.Settings;
 using FL.Point.GoogleCalendarApi.Interfaces;
 using FL.Point.Model;
+using FL.Point.Model.Settings;
 using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
