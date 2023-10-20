@@ -65,7 +65,6 @@ namespace FL.Point.GoogleCalendarApi.Services
             if (response.IsSuccessStatusCode)
             {
                 var tokenResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<GoogleTokenResponse>(responseContent);
-                tokenResponse.generatedAt = DateTime.Now;
                 return tokenResponse;
             }
             else
