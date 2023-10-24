@@ -20,7 +20,7 @@ namespace FL.Point.GoogleCalendarApi.Services
         private string _cliendId;
         private string _clientSecret;
 
-        public GoogleCalendarService(IOptions<GoogleAuthenticatorSettings> settings)
+        public GoogleCalendarService(IOptions<GoogleAuthenticatorSettings> settings) 
         {
             _httpClient = new HttpClient();
             _cliendId = settings.Value.ClientID;
