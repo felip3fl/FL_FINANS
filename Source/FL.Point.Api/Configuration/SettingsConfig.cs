@@ -1,6 +1,4 @@
-﻿using FL.Point.Api.Settings;
-using FL.Point.Data.Data;
-using Microsoft.Extensions.Hosting;
+﻿using FL.Point.Model.Settings;
 
 namespace FL.Point.Api.Configuration
 {
