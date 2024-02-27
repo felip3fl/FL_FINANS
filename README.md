@@ -47,7 +47,7 @@ Use o ``Visual Studio 2022`` para usar este projeto
 &nbsp;&nbsp;<img width="80"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg">
 </p>
  
-- ``.NET 7`` (Atualizado em 06/09/2023)
+- ``.NET 8`` (Atualizado em 26/02/2024)
 - ``Angular 16`` (Atualizado em 17/10/2023)
 - ``Paradigma de orientação a objetos``
 
